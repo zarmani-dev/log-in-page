@@ -6,9 +6,20 @@ interface Props {
   id: string;
   type: string;
   placeholder: string;
+  register: any;
+  error?: string;
+  validation?: object;
 }
 
-const InputBox = ({ label, id, type, placeholder }: Props) => {
+const InputBox = ({
+  label,
+  id,
+  type,
+  placeholder,
+  register,
+  error,
+  validation,
+}: Props) => {
   return (
     <div className="mb-3">
       <Label htmlFor={id} className="text-zinc-400">
@@ -19,7 +30,10 @@ const InputBox = ({ label, id, type, placeholder }: Props) => {
         id={id}
         className="text-zinc-200"
         placeholder={placeholder}
+        {...register(id, validation)}
       />
+
+      {error && <span className="text-red-500 text-sm">{error}</span>}
     </div>
   );
 };
