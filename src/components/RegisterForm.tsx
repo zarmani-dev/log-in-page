@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import InputBox from "./InputBox";
 import { Button } from "./ui/button";
+import useCookie from "react-use-cookie";
 
 interface Inputs {
   firstName: string;
@@ -20,6 +21,7 @@ const RegisterForm = () => {
   } = useForm<Inputs>();
 
   const navigate = useNavigate();
+  const [userToken, setUserToken] = useCookie("token");
 
   const handleFormSubmit = async (data: Inputs) => {
     const name: string = `${data.firstName} ${data.lastName}`;
@@ -41,9 +43,9 @@ const RegisterForm = () => {
     const json = await response.json();
 
     if (response.status == 200) {
-      console.log(json);
+      setUserToken(json.token);
       toast.success("Account created successfully");
-      navigate("/login");
+      navigate("/");
     } else {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -56,8 +58,8 @@ const RegisterForm = () => {
       </h3>
       <h1 className="text-zinc-300 text-3xl ">Create your account</h1>
       <div className="flex gap-3 text-zinc-400/80 font-medium">
-        <p>Already a member?</p>{" "}
-        <Link to="/login" className="text-[#FF5B31] ">
+        <p>Already have an account?</p>{" "}
+        <Link to="/" className="text-[#FF5B31] ">
           Log in
         </Link>
       </div>
@@ -103,7 +105,7 @@ const RegisterForm = () => {
               required: "Password is required",
               minLength: {
                 value: 8,
-                message: "Password must be at least 6 characters long",
+                message: "Password must be at least 8 characters long",
               },
             }}
           />
