@@ -2,6 +2,11 @@ import LoginForm from "@/components/LoginForm";
 import loginImg from "../assets/img/login.jpg";
 
 const LoginPage = () => {
+  // const [userToken] = useCookie("token");
+
+  // if (userToken) {
+  //   return <Navigate to="/home" />;
+  // }
   return (
     <main className="absolute top-3 md:top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-y-1/2 w-[90%] lg:w-[70%] mx-auto p-3 bg-zinc-900 rounded-lg">
       <section className="flex flex-col md:flex-row justify-between">

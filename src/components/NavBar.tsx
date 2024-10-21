@@ -20,9 +20,9 @@ import {
 } from "@/components/ui/sheet";
 import { Link, useNavigate } from "react-router-dom";
 
-import useCookie from "react-use-cookie";
-import { removeCookie } from "react-use-cookie";
+import useUserStore from "@/store/useUserStore";
 import { useState } from "react";
+import { removeCookie } from "react-use-cookie";
 import ProfileForm from "./ProfileForm";
 
 export default function Navbar() {
@@ -61,8 +61,10 @@ export default function Navbar() {
 function UserNav() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const [userCookie] = useCookie("user");
-  const userData = JSON.parse(userCookie);
+  const { user } = useUserStore();
+
+  console.log(user);
+
   const navigate = useNavigate();
 
   const onLogOut = () => {
@@ -77,22 +79,17 @@ function UserNav() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={userData.image} alt="Profile" />
-              <AvatarFallback>
-                {userData.name.split(" ")[0][0] +
-                  userData.name.split(" ")[1][0]}
-              </AvatarFallback>
+              <AvatarImage src={user.profile_image} alt="Profile" />
+              <AvatarFallback>{user.name.split(" ")[0][0]}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
-              <p className="text-sm font-medium leading-none">
-                {userData.name}
-              </p>
+              <p className="text-sm font-medium leading-none">{user.name}</p>
               <p className="text-xs leading-none text-muted-foreground">
-                {userData.email}
+                {user.email}
               </p>
             </div>
           </DropdownMenuLabel>

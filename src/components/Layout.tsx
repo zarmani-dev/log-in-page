@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <>
       <Outlet />
-      <Toaster position="top-right" />
+      <Toaster position="top-left" />
     </>
   );
 };

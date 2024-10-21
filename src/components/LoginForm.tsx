@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "./ui/button";
 import toast from "react-hot-toast";
 import useCookie from "react-use-cookie";
+import useUserStore from "@/store/useUserStore";
 
 interface Inputs {
   email: string;
@@ -18,8 +19,9 @@ const LoginForm = () => {
   } = useForm<Inputs>();
 
   const navigate = useNavigate();
-  const [userCookie, setUserCookie] = useCookie("user");
-  const [userToken, setUserToken] = useCookie("token");
+  const [, setUserCookie] = useCookie("user");
+  const [, setUserToken] = useCookie("token");
+  const { setUser } = useUserStore();
 
   const handleLogin = async (data: Inputs) => {
     console.log(data);
@@ -39,6 +41,7 @@ const LoginForm = () => {
       toast.success("Login Successfully");
       setUserToken(json.token);
       setUserCookie(JSON.stringify(json.user));
+      setUser(json.user);
       navigate("/home");
     } else {
       toast.error(json.message);

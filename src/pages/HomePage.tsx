@@ -2,11 +2,19 @@ import Navbar from "@/components/NavBar";
 import imageOne from "../assets/img/img1.jpg";
 import imageTwo from "../assets/img/img2.jpg";
 
+import useUserStore from "@/store/useUserStore";
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import useCookie from "react-use-cookie";
 
 const HomePage = () => {
   const [userToken] = useCookie("token");
+  const [userCookie] = useCookie("user");
+  const { setUser } = useUserStore();
+
+  useEffect(() => {
+    setUser(JSON.parse(userCookie));
+  }, []);
 
   if (!userToken) {
     return <Navigate to="/" />;

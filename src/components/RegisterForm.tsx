@@ -21,7 +21,7 @@ const RegisterForm = () => {
   } = useForm<Inputs>();
 
   const navigate = useNavigate();
-  const [userToken, setUserToken] = useCookie("token");
+  const [, setUserToken] = useCookie("token");
 
   const handleFormSubmit = async (data: Inputs) => {
     const name: string = `${data.firstName} ${data.lastName}`;
