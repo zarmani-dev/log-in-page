@@ -1,4 +1,4 @@
-import { Menu, User } from "lucide-react";
+import { Asterisk, AsteriskIcon, Menu, User } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -115,6 +115,10 @@ function UserNav() {
             <SheetTitle>Edit profile</SheetTitle>
             <SheetDescription>
               Make changes to your profile here. Click save when you're done.
+              <span className="flex md:hidden items-center text-xs mt-3">
+                <span className="text-red-600 text-base mr-1">*</span>
+                Click Image to Change Profile
+              </span>
             </SheetDescription>
           </SheetHeader>
           <ProfileForm />
