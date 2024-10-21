@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+![Project Screenshot](./public/project-ss.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# User Authentication & Profile Management App
 
-Currently, two official plugins are available:
+This project is a simple user registration and profile management app built using **React**, **TypeScript**, and **ShadCN UI**. The app allows users to sign up, log in, and manage their profile by changing their name and profile image. Authentication is handled via a backend API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **User Registration**: New users can sign up with their username, email, and password.
+- **User Login**: Registered users can log in with their credentials.
+- **Profile Management**: Users can update their profile by changing their name and profile picture.
+- **React + TypeScript**: Ensures type safety and better code scalability.
+- **ShadCN UI**: Used for designing a modern, accessible, and customizable UI.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Frontend**:
+  - [React](https://reactjs.org/)
+  - [TypeScript](https://www.typescriptlang.org/)
+  - [ShadCN UI](https://shadcn.dev/) for UI components
+- **Authentication**: Handled via backend API (JWT or session-based authentication).
