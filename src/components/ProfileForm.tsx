@@ -22,9 +22,8 @@ const ProfileForm = () => {
 
   const { user, setUser } = useUserStore();
 
-  const [userCookie, setUserCookie] = useCookie("user");
+  const [, setUserCookie] = useCookie("user");
   const [userToken] = useCookie("token");
-  const userData = JSON.parse(userCookie);
 
   const onEdit = () => {
     setDisabled(false);
