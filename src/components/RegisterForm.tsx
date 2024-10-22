@@ -26,19 +26,22 @@ const RegisterForm = () => {
   const handleFormSubmit = async (data: Inputs) => {
     const name: string = `${data.firstName} ${data.lastName}`;
 
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        email: data.email,
-        password: data.password,
-        password_confirmation: data.password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const response = await fetch(
+      `https://voucher-app-auth-api.ygnsh.com/api/v1/register`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email: data.email,
+          password: data.password,
+          password_confirmation: data.password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
 
     const json = await response.json();
 

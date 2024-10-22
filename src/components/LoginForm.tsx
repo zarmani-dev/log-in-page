@@ -26,14 +26,17 @@ const LoginForm = () => {
   const handleLogin = async (data: Inputs) => {
     console.log(data);
 
-    const res = await fetch(import.meta.env.VITE_API_URL + "/login", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://voucher-app-auth-api.ygnsh.com/api/v1/login",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
 
     const json = await res.json();
 

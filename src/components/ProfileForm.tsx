@@ -42,7 +42,7 @@ const ProfileForm = () => {
     formData.append("profile_image", file);
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/user-profile/change-profile-image`,
+      `https://voucher-app-auth-api.ygnsh.com/api/v1/user-profile/change-profile-image`,
       {
         method: "POST",
         body: formData,
@@ -68,7 +68,7 @@ const ProfileForm = () => {
     console.log(data);
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/user-profile/change-name`,
+      `https://voucher-app-auth-api.ygnsh.com/api/v1/user-profile/change-name`,
       {
         method: "POST",
         body: JSON.stringify({ name: data.username }),
