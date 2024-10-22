@@ -4,9 +4,10 @@ import useCookie from "react-use-cookie";
 import { Navigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const [userToken] = useCookie("token");
+  const [userCookie] = useCookie("user");
+  // const { user } = useUserStore();
 
-  if (userToken) {
+  if (userCookie) {
     return <Navigate to="/home" />;
   }
   return (

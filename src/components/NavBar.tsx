@@ -63,8 +63,6 @@ function UserNav() {
 
   const { user } = useUserStore();
 
-  console.log(user);
-
   const navigate = useNavigate();
 
   const onLogOut = () => {

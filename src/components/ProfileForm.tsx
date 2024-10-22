@@ -65,7 +65,9 @@ const ProfileForm = () => {
   };
 
   const onUpdateName = async (data: Inputs) => {
-    console.log(data);
+    if (!data.username) {
+      return;
+    }
 
     const res = await fetch(
       `https://voucher-app-auth-api.ygnsh.com/api/v1/user-profile/change-name`,

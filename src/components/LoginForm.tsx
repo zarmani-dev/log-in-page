@@ -24,8 +24,6 @@ const LoginForm = () => {
   const { setUser } = useUserStore();
 
   const handleLogin = async (data: Inputs) => {
-    console.log(data);
-
     const res = await fetch(
       "https://voucher-app-auth-api.ygnsh.com/api/v1/login",
       {
